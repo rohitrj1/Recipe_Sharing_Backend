@@ -48,7 +48,7 @@ public class AuthController {
         createdUser.setEmail(email);
         createdUser.setPassword(passwordEncoder.encode(password));
         createdUser.setFullName(fullName);
-     User saveUser =  userRepo.save(createdUser);
+        User saveUser =  userRepo.save(createdUser);
         Authentication authentication = new UsernamePasswordAuthenticationToken(email,password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtProvider.generateToken(authentication);
