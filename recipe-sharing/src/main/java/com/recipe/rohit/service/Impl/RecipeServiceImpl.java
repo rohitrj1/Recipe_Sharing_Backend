@@ -30,7 +30,7 @@ public class RecipeServiceImpl implements ReceipeService {
 
     @Override
     public void deleteRecipe(Long id) throws Exception {
-        recipeRepository.deleteById(id);
+       this.recipeRepository.deleteById(id);
     }
 
     @Override

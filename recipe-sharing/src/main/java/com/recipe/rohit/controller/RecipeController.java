@@ -46,21 +46,21 @@ public class RecipeController {
         return new ResponseEntity<>(receipeService.findRecipeById(recipeId),HttpStatus.OK);
     }
 
-    @DeleteMapping("/recipeId")
-    public ResponseEntity<?> deleteRecipe(@PathVariable Long recipeId) throws Exception {
-        receipeService.deleteRecipe(recipeId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteRecipe(@PathVariable Long id) throws Exception {
+        receipeService.deleteRecipe(id);
         return ResponseEntity.ok("Sucessfully Recipe deleted ..");
     }
 
-    @PutMapping("/{recipeId}")
-    public ResponseEntity<Recipe> updatedRecipe(@RequestBody Recipe recipe,@PathVariable Long recipeId) throws Exception {
-        return new ResponseEntity<>(receipeService.updateRecipe(recipe,recipeId),HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<Recipe> updatedRecipe(@RequestBody Recipe recipe,@PathVariable Long id) throws Exception {
+        return new ResponseEntity<>(receipeService.updateRecipe(recipe,id),HttpStatus.OK);
     }
 
-    @PutMapping("/{recipeId}/like")
-    public ResponseEntity<Recipe> likeRecipe(@RequestHeader(JwtConstant.JWT_HEADER) String jwt,@PathVariable Long recipeId) throws Exception {
+    @PutMapping("/{id}/like")
+    public ResponseEntity<Recipe> likeRecipe(@RequestHeader(JwtConstant.JWT_HEADER) String jwt,@PathVariable Long id) throws Exception {
         User user = userService.findUserByJwt(jwt);
-        return new ResponseEntity<>( receipeService.likeRecipe(recipeId,user),HttpStatus.OK);
+        return new ResponseEntity<>( receipeService.likeRecipe(id,user),HttpStatus.OK);
     }
 
 //    @PutMapping("/{recipeId}/user/{userId}")
